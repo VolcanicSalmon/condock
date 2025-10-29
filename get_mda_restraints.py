@@ -21,11 +21,12 @@ def write_list(ipath):
     ligslist=ipath.replace('.pdb','_ligs.txt')
     with open(protslist,'w') as out1:
         out1.write(' '.join(map(str,activeprots))+'\n')
-        out1.write('\n')
+        out1.write('\n')#note that haddock3 needs 2 lines 
     with open(ligslist,'w') as out2:
         out2.write(' '.join(map(str,ligsites))+'\n')
         out2.write('\n')
     return protslist,ligslist
+    ''' json file no longer used for haddock3
 def write_config(ipath,opath):
     activeprots=get_mda_map(ipath)
     ligsites=[int(resid) for resid in set(mda.Universe(ipath).select_atoms('resname LIG').resids)]
@@ -47,7 +48,7 @@ def write_config(ipath,opath):
             ]
     with open(opath,'w') as output:
         json.dump(conf,output,indent=1)
-
+'''
 if __name__=='__main__':
     ipath=sys.argv[1]
     write_list(ipath)

@@ -57,7 +57,7 @@ allatoms = true
 
 def main():
     if len(sys.argv) != 6:
-        print("Usage: python generate_haddock_cfg.py <protein_pdb> <ligand_pdb> <ambig_fname> <run_dir> <config_filename>")
+        print("Usage: python3 handconf.py <protein_pdb> <ligand_pdb> <ambig_fname> <run_dir> <config_filename>")
         sys.exit(1)
 
     protein_pdb = sys.argv[1]

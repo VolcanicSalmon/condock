@@ -1,7 +1,7 @@
 import os
 import sys
 
-# Template for HADDOCK3 configuration with full flexibility
+# for i in NP_1*/*.pdb; do python3 hadconf.py $i ligand_h.acpype/ligand_new2.pdb $(dirname $i)/*tbl $(dirname $i)_run $(dirname $i).cfg; done
 config_template = """run_dir = "{run_dir}"
 mode = "local"
 ncores = 24

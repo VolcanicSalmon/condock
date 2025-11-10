@@ -21,8 +21,6 @@ queue_limit = 100
 {molblock}
 
 [topoaa]
-autohis = false
-{topaablocks}
 
 {rigidblocks}
 
@@ -75,13 +73,13 @@ def writeconf():
     )
     topaablocks=""
     for i in range(1,plantchains+1):
-        topaablocks+=f"""[topaa.mol{i}]
+        topaablocks+=f"""[topoaa.mol{i}]
 nhisd = 0
 nhise = 1
 hise_1 = 75
 """
-    topaablocks+=f"""[topaa.mol{plantchains+1}]
-nhise = 1
+    topaablocks+=f"""[topoaa.mol{plantchains+1}]
+nhisd = 1
 hisd_1 = 76
 nhise = 1
 hise_1 = 15
@@ -92,11 +90,10 @@ hise_1 = 15
         rigidblocks+=f"mol_shape_{i} = false\n"
     rigidblocks+=f"mol_fix_origin_{plantchains+1} = false\n"
     rigidblocks+=f"mol_shape_{plantchains+1} = false\n"
-    rigidblocks+=f"tolerance= = 10\nambig_fname = {ambig_fname}\nsampling = 80\n"
+    rigidblocks+=f"""tolerance = 10\nambig_fname = "{ambig_fname}"\nsampling = 80\n"""
     os.makedirs(run_dir,exist_ok=True)
     config_file=config_filename
     with open(config_file,'w') as f:
         f.write(config_template.format(run_dir=run_dir,molblock=molblock,topaablocks=topaablocks,rigidblocks=rigidblocks,ambig_fname=ambig_fname))
 if __name__=="__main__":
     writeconf()
-    
